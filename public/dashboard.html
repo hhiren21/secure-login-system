@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard · Secure Login System</title>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<div class="shell">
+  <div class="topbar">
+    <span class="dot"></span>
+    <span class="brand">secure<span>login</span></span>
+    <span style="margin-left:auto;" class="logout-link" id="logoutBtn">log out</span>
+  </div>
+
+  <div class="dash-wrap">
+    <div class="eyebrow">session</div>
+    <h1 id="welcome">Welcome back</h1>
+
+    <div class="card">
+      <h2>Account</h2>
+      <div class="kv"><span class="k">Username</span><span id="accUsername">—</span></div>
+      <div class="kv"><span class="k">Email</span><span id="accEmail">—</span></div>
+      <div class="kv"><span class="k">Created</span><span id="accCreated">—</span></div>
+      <div class="kv">
+        <span class="k">Two-factor auth</span>
+        <span id="twofaStatus" class="badge off">off</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Two-factor authentication</h2>
+      <p style="color:var(--muted); font-size:13px; margin-top:0;">
+        Add a TOTP code (Google Authenticator, Authy, 1Password, etc.) as a second
+        factor required at login.
+      </p>
+
+      <div id="twofaOff">
+        <button class="primary" id="startSetupBtn">Enable 2FA</button>
+      </div>
+
+      <div id="twofaSetupFlow" style="display:none;">
+        <div id="qrWrap"></div>
+        <div class="manual-key" id="manualKey"></div>
+        <div class="field">
+          <label for="verifyToken">Enter the 6-digit code from your app to confirm</label>
+          <input id="verifyToken" type="text" inputmode="numeric" maxlength="6" />
+        </div>
+        <button class="primary" id="confirmSetupBtn">Confirm and enable</button>
+        <div class="msg" id="setupMsg"></div>
+      </div>
+
+      <div id="twofaOn" style="display:none;">
+        <button class="ghost" id="disableBtn">Disable 2FA</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/dashboard.js"></script>
+</body>
+</html>
