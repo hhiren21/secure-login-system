@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Secure Login System</title>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<div class="shell">
+  <div class="topbar">
+    <span class="dot"></span>
+    <span class="brand">secure<span>login</span></span>
+  </div>
+
+  <main class="main">
+    <section class="panel-auth">
+      <div class="eyebrow">access control</div>
+      <h1 id="heading">Sign in to your account</h1>
+
+      <div class="tabs">
+        <button class="tab active" id="tabLogin">Log in</button>
+        <button class="tab" id="tabRegister">Register</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <form id="loginForm" autocomplete="off">
+        <div class="field">
+          <label for="loginUsername">Username</label>
+          <input id="loginUsername" name="username" type="text" required maxlength="32" autocomplete="username" />
+        </div>
+        <div class="field">
+          <label for="loginPassword">Password</label>
+          <input id="loginPassword" name="password" type="password" required autocomplete="current-password" />
+        </div>
+        <div class="field" id="tokenField" style="display:none;">
+          <label for="loginToken">6-digit authentication code</label>
+          <input id="loginToken" name="token" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code" />
+        </div>
+        <button type="submit" class="primary" id="loginSubmit">Log in</button>
+        <div class="msg" id="loginMsg"></div>
+      </form>
+
+      <!-- REGISTER FORM -->
+      <form id="registerForm" autocomplete="off" style="display:none;">
+        <div class="field">
+          <label for="regUsername">Username</label>
+          <input id="regUsername" name="username" type="text" required minlength="3" maxlength="32" autocomplete="username" />
+          <div class="hint">3-32 characters: letters, numbers, underscores</div>
+        </div>
+        <div class="field">
+          <label for="regEmail">Email</label>
+          <input id="regEmail" name="email" type="email" required autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="regPassword">Password</label>
+          <input id="regPassword" name="password" type="password" required minlength="10" autocomplete="new-password" />
+          <div class="hint">10+ characters, mixing upper/lowercase, a number, and a symbol</div>
+        </div>
+        <button type="submit" class="primary" id="registerSubmit">Create account</button>
+        <div class="msg" id="registerMsg"></div>
+      </form>
+    </section>
+
+    <section class="panel-side">
+      <div class="posture-card">
+        <div class="title"><span>security posture</span><span>live</span></div>
+        <div class="check-row">
+          <span class="flag">✓</span>
+          <span class="label">Password hashing</span>
+          <span class="detail">argon2id</span>
+        </div>
+        <div class="check-row">
+          <span class="flag">✓</span>
+          <span class="label">SQL injection defense</span>
+          <span class="detail">parameterized queries</span>
+        </div>
+        <div class="check-row">
+          <span class="flag">✓</span>
+          <span class="label">Session cookie</span>
+          <span class="detail">httpOnly · sameSite=strict</span>
+        </div>
+        <div class="check-row">
+          <span class="flag">✓</span>
+          <span class="label">Session fixation guard</span>
+          <span class="detail">regenerate on login</span>
+        </div>
+        <div class="check-row">
+          <span class="flag">✓</span>
+          <span class="label">Brute-force throttling</span>
+          <span class="detail">rate limit + lockout</span>
+        </div>
+        <div class="check-row">
+          <span class="flag">✓</span>
+          <span class="label">Two-factor auth</span>
+          <span class="detail">TOTP, optional</span>
+        </div>
+        <div class="check-row">
+          <span class="flag">✓</span>
+          <span class="label">Response headers</span>
+          <span class="detail">CSP via helmet</span>
+        </div>
+        <div class="check-row" style="border:none;">
+          <span class="label" style="color:var(--muted);">awaiting input<span class="cursor"></span></span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>
