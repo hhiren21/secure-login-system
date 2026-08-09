@@ -1,0 +1,5 @@
+1. node_modules/
+2. data/*.db
+3. data/*.db-*
+4. .env
+5. *.log
